@@ -17,17 +17,17 @@ var subnets = [
   {
     name: 'appgw'
     priPrefix: '10.0.0.0/24'
-    drPrefix: '172.0.0.024'
+    drPrefix: '172.0.0.0/24'
   }
   {
     name: 'app'
     priPrefix: '10.1.0.0/24'
-    drPrefix: '172.1.0.024'
+    drPrefix: '172.1.0.0/24'
   }
   {
     name: 'db'
     priPrefix: '10.2.0.0/24'
-    drPrefix: '172.2.0.024'
+    drPrefix: '172.2.0.0/24'
   }
 ]
 
