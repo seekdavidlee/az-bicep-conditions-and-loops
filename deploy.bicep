@@ -135,7 +135,7 @@ resource priNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subn
 }]
 
 resource drNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subnet in subnets: {
-  name: '${stackName}-pri-${subnet.name}-subnet-nsg'
+  name: '${stackName}-dr-${subnet.name}-subnet-nsg'
   location: drLocation
   tags: tags
   properties: {
