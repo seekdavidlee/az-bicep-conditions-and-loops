@@ -21,13 +21,13 @@ var subnets = [
   }
   {
     name: 'app'
-    priPrefix: '10.1.0.0/24'
-    drPrefix: '172.1.0.0/24'
+    priPrefix: '10.0.1.0/24'
+    drPrefix: '172.0.1.0/24'
   }
   {
     name: 'db'
-    priPrefix: '10.2.0.0/24'
-    drPrefix: '172.2.0.0/24'
+    priPrefix: '10.0.2.0/24'
+    drPrefix: '172.0.2.0/24'
   }
 ]
 
