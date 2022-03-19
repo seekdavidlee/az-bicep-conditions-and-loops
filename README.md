@@ -1,5 +1,5 @@
 # Introduction
-This is part of a demo series on DevOps. In this project, we are focused on designing a 2 VNETS which are paired with one being the primary and the other for DR purposes. We will learn about the concepts of how to write conditions and perform iterative loops to build subnets for example.
+This is part of a demo series on DevOps. In this project, we are focused on designing two Virtual Networks (VNETs) which are paired. The first represents the primary VNET and the other for DR purposes. We will learn about the concepts of how to write conditions and perform iterative loops to build subnets for example.
 
 ![Architecture](/Architecture/Networks.png)
 
