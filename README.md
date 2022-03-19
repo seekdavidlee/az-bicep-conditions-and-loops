@@ -8,4 +8,4 @@ We have created a bicep file and we are ready to deploy. Let's launch CloudShell
 
 1. Create resource group with the following command ``` az group create --name bicep-demo --location centralus ``` 
 2. Configure your variables ``` $SourceIP="<Office Source IP>";$prefix=<Some prefix value for your resource names>" ```
-3. Next, let's deploy this into the resource group ``` az deployment group create -n deploy-1 -g bicep-demo --template-file deploy.bicep --parameters stackPrefix=$prefix stackEnvironment=dev sourceIP=$SourceIP ```
+3. Next, let's deploy this into the resource group ``` az deployment group create -n deploy-1 -g bicep-demo --template-file deploy.bicep --parameters stackPrefix=$prefix stackEnvironment=dev sourceIP=$SourceIP stackOwner=team1@contoso.com ```

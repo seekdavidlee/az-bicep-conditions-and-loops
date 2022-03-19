@@ -2,6 +2,7 @@
 
 param stackPrefix string
 param stackEnvironment string
+param stackOwner string
 param priLocation string = 'centralus'
 param drLocation string = 'eastus2'
 param sourceIP string
@@ -11,6 +12,7 @@ var stackName = '${stackPrefix}${stackEnvironment}'
 var tags = {
   'stack-name': 'platform-networking'
   'stack-environment': stackEnvironment
+  'stack-owner': stackOwner
 }
 
 var subnets = [
@@ -91,17 +93,17 @@ resource drPeering 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@202
   }
 }
 
-var allowHttp = {
-  name: 'AllowHttp'
+var allowHttps = {
+  name: 'AllowHttps'
   properties: {
-    description: 'Allow HTTP'
+    description: 'Allow HTTPS'
     priority: 100
     protocol: 'Tcp'
     direction: 'Inbound'
     access: 'Allow'
     sourceAddressPrefix: sourceIP
     sourcePortRange: '*'
-    destinationPortRange: '80'
+    destinationPortRange: '443'
     destinationAddressPrefix: '*'
   }
 }
@@ -128,7 +130,7 @@ resource priNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subn
   tags: tags
   properties: {
     securityRules: (subnet.name == 'appgw') ? [
-      allowHttp
+      allowHttps
       allowAppGatewayV2
     ] : []
   }
@@ -140,7 +142,7 @@ resource drNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subne
   tags: tags
   properties: {
     securityRules: (subnet.name == 'appgw') ? [
-      allowHttp
+      allowHttps
       allowAppGatewayV2
     ] : []
   }
