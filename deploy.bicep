@@ -62,7 +62,7 @@ resource drVnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
         '172.0.0.0/16'
       ]
     }
-    subnets: [for (subnet, i) in subnets: {
+    subnets: [for subnet in subnets: {
       name: subnet.name
       properties: {
         addressPrefix: subnet.drPrefix
@@ -125,7 +125,7 @@ var allowAppGatewayV2 = {
 }
 
 resource priNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subnet in subnets: {
-  name: '${stackName}-pri-${subnet.name}-subnet-nsg'
+  name: '${subnet.name}-pri-subnet-nsg'
   location: priLocation
   tags: tags
   properties: {
@@ -137,7 +137,7 @@ resource priNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subn
 }]
 
 resource drNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = [for subnet in subnets: {
-  name: '${stackName}-dr-${subnet.name}-subnet-nsg'
+  name: '${subnet.name}-dr-subnet-nsg'
   location: drLocation
   tags: tags
   properties: {
